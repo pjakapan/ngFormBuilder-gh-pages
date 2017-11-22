@@ -1,13 +1,4 @@
 {
-    "_id": "5a124e0ebe414f000190c170",
-    "machineName": "kegoilcdymkwamk:mail",
-    "modified": "2017-11-21T03:28:23.690Z",
-    "title": "Mail",
-    "display": "form",
-    "name": "mail",
-    "path": "mailform",
-    "project": "5a124dceeb180900018bd3ee",
-    "created": "2017-11-20T03:37:50.503Z",
     "components": [
         {
             "lockKey": true,
@@ -322,18 +313,5 @@
             "custom": "var url = window.location.href;\nvar id_token = getParameterByName('id_token',url);\nvar settings = {\n  \"async\": true,\n  \"crossDomain\": true,\n  \"url\": \"https://togetherservice.azurewebsites.net/api/callsp\",\n  \"method\": \"POST\",\n  \"headers\": {\n    \"content-type\": \"application/json\",\n    \"authorization\": \"Bearer \"+id_token,\n    \"cache-control\": \"no-cache\"\n  },\n  \"processData\": false,\n  \"data\": \"{\\n    \\\"sender\\\": \\\"\"+ form.submission.data.panelFrom +\"\\\",\\n    \\\"receiver\\\": \\\"\"+ form.submission.data.panelTo +\"\\\",\\n    \\\"subject\\\": \\\"\"+ form.submission.data.panelSubject +\"\\\",\\n    \\\"attachment_url\\\": \\\"\"+ form.submission.data.panelAttachment +\"\\\",\\n    \\\"body\\\": \\\"\"+ form.submission.data.panelTextareaField +\"\\\"\\n}\"\n}\n\n$.ajax(settings).done(function () {  \nform.setAlert('success', 'The mail has been sent successfully.');\nalert( 'The mail has been sent successfully.');\nform.reset();\nform.render();\nconsole.log(\"success\");   \n}).fail(function (error){\nform.setAlert('danger',  'Unsent the email');\n});"
         }
     ],
-    "owner": "59b0f3b82f12080007486f7a",
-    "submissionAccess": [],
-    "access": [
-        {
-            "type": "read_all",
-            "roles": [
-                "5a124dceeb180900018bd3ef",
-                "5a124dceeb180900018bd3f0",
-                "5a124dceeb180900018bd3f1"
-            ]
-        }
-    ],
-    "tags": [],
     "type": "form"
 }
