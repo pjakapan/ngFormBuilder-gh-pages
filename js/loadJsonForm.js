@@ -6,7 +6,7 @@
 var arrForm = loadForm();
 
 function loadForm() {
-    var url = "./json/mailform.json"
+    var url = "./json/data.json"
     var json = null;
     var getsetting = {
         'async': false,
