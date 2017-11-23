@@ -93,42 +93,44 @@
         <div class="col-sm-10 col-sm-offset-1">
           <pre class="text-center bg-info"><h4><code>FORM Management</code></h4></pre>
           <div class="well">
-              <p>
-                  Load a JSON document: <input type="file" id="loadDocument" value="Load"/>
-                </p>
-                <p>
-                  Save a JSON document: <input type="button" id="saveDocument" value="Save" />
-                </p>
-                
-                <div id="jsoneditor"></div>
+            <p>
+              Load a JSON document:
+              <input type="file" id="loadDocument" value="Load" />
+            </p>
+            <p>
+              Save a JSON document:
+              <input type="button" id="saveDocument" value="Save" />
+            </p>
+
+            <div id="jsoneditor"></div>
           </div>
         </div>
         <div class="clearfix"></div>
       </div>
       <div class="row">
-          <div class="col-sm-6 col-sm-offset-1">
-            <pre class="text-center bg-info"><h4><code>&lt;form-builder form="form"&gt;&lt;/form-builder&gt;</code></h4></pre>
-            <div class="well" style="background-color: #fdfdfd;">
-              <form-builder form="form"></form-builder>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <pre class="bg-info"><h4><code>$rootScope.form = </code></h4></pre>
-            <div class="well jsonviewer">
-              <json-explorer data="form" collapsed="jsonCollapsed"></json-explorer>
-            </div>
+        <div class="col-sm-6 col-sm-offset-1">
+          <pre class="text-center bg-info"><h4><code>&lt;form-builder form="form"&gt;&lt;/form-builder&gt;</code></h4></pre>
+          <div class="well" style="background-color: #fdfdfd;">
+            <form-builder form="form"></form-builder>
           </div>
         </div>
+        <div class="col-sm-4">
+          <pre class="bg-info"><h4><code>$rootScope.form = </code></h4></pre>
+          <div class="well jsonviewer">
+            <json-explorer data="form" collapsed="jsonCollapsed"></json-explorer>
+          </div>
+        </div>
+      </div>
       <div class="row">
-          <div class="col-sm-10 col-sm-offset-1">
-            <h3 class="text-center text-muted">Renders as a form in your Application</h3>
-            <pre class="text-center bg-info"><h4><code>&lt;formio form="form"&gt;&lt;/formio&gt;</code></h4></pre>
-            <div class="well">
-              <formio form="form" ng-if="renderForm"></formio>
-            </div>
+        <div class="col-sm-10 col-sm-offset-1">
+          <h3 class="text-center text-muted">Renders as a form in your Application</h3>
+          <pre class="text-center bg-info"><h4><code>&lt;formio form="form"&gt;&lt;/formio&gt;</code></h4></pre>
+          <div class="well">
+            <formio form="form" ng-if="renderForm"></formio>
           </div>
-          <div class="clearfix"></div>
         </div>
+        <div class="clearfix"></div>
+      </div>
     </div>
   </div>
   <script src="https://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
@@ -160,8 +162,8 @@
           $rootScope.form = arrForm;
 
           $rootScope.renderForm = true;
-          $rootScope.$on('formUpdate', function (event, form) {
-            angular.merge($rootScope.form, form);
+          $rootScope.$on('formUpdate', function (event, realform) {
+            angular.merge($rootScope.form, realform);
             $rootScope.renderForm = false;
             setTimeout(function () {
               $rootScope.renderForm = true;
@@ -226,6 +228,7 @@
       }
       console.log(fname);
       var blob = new Blob([editor.getText()], { type: 'application/json;charset=utf-8' });
+      var realform = editor.getText();
       saveAs(blob, fname);
     };
   </script>
