@@ -83,7 +83,7 @@
   <!-- BROWSE HAPPY ENDS HERE -->
   <div class="jumbotron">
     <div class="container text-center">
-      <h1>TOGETHER FORM</h1>
+      <h1>TOGETHER FORM BUILDER</h1>
     </div>
   </div>
   <div class="page-content" ng-app="formioApp">
@@ -153,7 +153,7 @@
           }];
           $rootScope.form = arrForm;
           $rootScope.myFunc = function () {
-          console.log(JSON.parse(editor.getText()));
+            $rootScope.form = JSON.parse(editor.getText());
           };
           $rootScope.renderForm = true;
           $rootScope.$on('formUpdate', function (event, realform) {
@@ -161,6 +161,7 @@
             $rootScope.renderForm = false;
             setTimeout(function () {
               $rootScope.renderForm = true;
+              editor.setText("{}");
             }, 10);
           });
 
