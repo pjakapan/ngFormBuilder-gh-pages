@@ -161,7 +161,7 @@
             $rootScope.renderForm = false;
             setTimeout(function () {
               $rootScope.renderForm = true;
-              editor.setText("{}");
+              console.log("update");
             }, 10);
           });
 
@@ -201,6 +201,7 @@
       readAsDefault: 'Text',
       on: {
         load: function (event, file) {
+          console.log("event.target.result");
           editor.setText(event.target.result);
         }
       }
