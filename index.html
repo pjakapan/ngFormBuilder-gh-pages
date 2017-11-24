@@ -100,6 +100,7 @@
             <p>
               Save a JSON document:
               <input type="button" id="saveDocument" value="Save" />
+              <button ng-click="myFunc()">Preview</button>
             </p>
 
             <div id="jsoneditor"></div>
@@ -160,7 +161,9 @@
             title: 'Wizard'
           }];
           $rootScope.form = arrForm;
-
+          $rootScope.myFunc = function () {
+          console.log(JSON.parse(editor.getText()));
+          };
           $rootScope.renderForm = true;
           $rootScope.$on('formUpdate', function (event, realform) {
             angular.merge($rootScope.form, realform);
