@@ -161,7 +161,8 @@
             $rootScope.renderForm = false;
             setTimeout(function () {
               $rootScope.renderForm = true;
-              console.log("update");
+              console.log($rootScope.form);
+              editor.setText(JSON.stringify($rootScope.form));
             }, 10);
           });
 
@@ -201,7 +202,7 @@
       readAsDefault: 'Text',
       on: {
         load: function (event, file) {
-          console.log("event.target.result");
+          console.log(event.target.result);
           editor.setText(event.target.result);
         }
       }
