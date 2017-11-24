@@ -161,7 +161,8 @@
             $rootScope.renderForm = false;
             setTimeout(function () {
               $rootScope.renderForm = true;
-              console.log("update");
+              console.log($rootScope.form);
+              editor.setText($rootScope.form);
             }, 10);
           });
 
