@@ -162,7 +162,7 @@
             setTimeout(function () {
               $rootScope.renderForm = true;
               console.log($rootScope.form);
-              editor.setText($rootScope.form);
+              editor.setText(JSON.stringify($rootScope.form));
             }, 10);
           });
 
